@@ -1,0 +1,10 @@
+.OptionsContainer {
+    font-size: 2rem;
+    /*display: flex;*/
+    button{
+        font-size: 30px;
+    }
+    button + button{
+        margin : 10px;
+    }
+}
