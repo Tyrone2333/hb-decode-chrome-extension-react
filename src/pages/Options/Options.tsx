@@ -54,6 +54,22 @@ const Options: React.FC<Props> = ({title}: Props) => {
         });
     }
 
+    function setBadge() {
+        // 设置插件图标
+        // @ts-ignore
+        const canvas = new OffscreenCanvas(16, 16)
+        const context = canvas.getContext('2d')
+        context.clearRect(0, 0, 16, 16)
+        context.fillStyle = '#00FF00'  // Green
+        context.fillRect(0, 0, 16, 16)
+        const imageData = context.getImageData(0, 0, 16, 16)
+        chrome.action.setIcon({imageData: imageData}, () => { /* ... */
+        })
+
+        // 设置 badge 文字
+        chrome.action.setBadgeBackgroundColor({color: 'green'})
+        chrome.action.setBadgeText({text: '99+'})
+    }
 
     return <div className='OptionsContainer'>
 
@@ -67,6 +83,7 @@ const Options: React.FC<Props> = ({title}: Props) => {
         <hr/>
         <button onClick={getCurrentTab}>获取 当前 tab</button>
         <hr/>
+        <button onClick={setBadge}>设置徽标</button>
 
     </div>;
 };
