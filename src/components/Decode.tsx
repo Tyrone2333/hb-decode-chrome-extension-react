@@ -23,8 +23,8 @@ const Newtab = () => {
             .then((text) => {
                 setInputField(text)
             }).catch((error) => {
-                console.log('readText 出错: ',error)
-            })
+            console.log('readText 出错: ', error)
+        })
     }
 
     function encode(text: string) {
@@ -42,7 +42,7 @@ const Newtab = () => {
         let convertedText
         console.log('doConversion', text)
         try {
-            convertedText = decode(text)
+            convertedText = JSON.stringify(JSON.parse(decode(text)), null, 4)
         } catch (e: any) {
             console.log(e.message)
             setOutputField(e.message)
@@ -91,7 +91,7 @@ const Newtab = () => {
                 <div className='row'>
                     <p>转换结果</p>
 
-                    <textarea id='input-text' value={outputField} onChange={(
+                    <textarea id='output-text' value={outputField} onChange={(
                         ev: React.ChangeEvent<HTMLTextAreaElement>,
                     ) => setOutputField(ev.target.value)}/>
                     <button className='btn btn-primary' onClick={doReduction}>还原</button>

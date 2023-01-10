@@ -1,11 +1,16 @@
-.container{
-  width: 260px;
+.container {
+  width: 460px;
   margin: 20px;
 }
+
 textarea {
   vertical-align: bottom;
   margin-right: 10px;
 
-  width: 200px;
-  height: 100px;
+  width: 400px;
+  height: 300px;
+
+  &#input-text {
+    height: 80px;
+  }
 }
